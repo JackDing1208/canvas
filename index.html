@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 
 <head>
     <meta charset="UTF-8">
@@ -7,10 +7,41 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Canvas</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="//at.alicdn.com/t/font_1084660_l8tbu8vkcs8.js"></script>
+    <style type="text/css">
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
     <canvas id="draw"></canvas>
+    <div class="tool">
+        <div class="left">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-pen"></use>
+            </svg>
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-eraser"></use>
+            </svg>
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon--heidian"></use>
+            </svg>
+        </div>
+        <div class="right">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-clear"></use>
+            </svg>
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-save"></use>
+            </svg>
+        </div>
+    </div>
     <script src="./main.js"></script>
 
 </body>

@@ -3,10 +3,10 @@ var context = draw.getContext('2d')
 
 
 //设置画布大小
-var pageWidth = document.documentElement.clientWidth
-var pageHeight = document.documentElement.clientHeight
-draw.width = pageWidth
-draw.height = pageHeight
+canvasSize(draw)
+window.onresize = function () {
+    canvasSize(draw)
+}
 
 var painting = false
 var formerPoint = { x: undefined, y: undefined }
@@ -50,4 +50,10 @@ function drawLine(x1, y1, x2, y2, w) {
     context.lineTo(x2, y2);
     context.stroke()
     context.closePath()
+}
+function canvasSize(canvas) {
+    var pageWidth = document.documentElement.clientWidth
+    var pageHeight = document.documentElement.clientHeight
+    canvas.width = pageWidth
+    canvas.height = pageHeight
 }
