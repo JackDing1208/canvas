@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Canvas</title>
     <link rel="stylesheet" href="./style.css">
-    <script src="//at.alicdn.com/t/font_1084660_l8tbu8vkcs8.js"></script>
+    <script src="//at.alicdn.com/t/font_1084660_hrwmcx3cwc8.js"></script>
     <style type="text/css">
         .icon {
             width: 1em;
@@ -21,26 +21,41 @@
 
 <body>
     <canvas id="draw"></canvas>
-    <div class="tool">
-        <div class="left">
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-pen"></use>
-            </svg>
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-eraser"></use>
-            </svg>
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon--heidian"></use>
-            </svg>
-        </div>
-        <div class="right">
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-clear"></use>
-            </svg>
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-save"></use>
-            </svg>
-        </div>
+    <div class="tool clearfix">
+        <svg class="icon on" id="pen">
+            <use xlink:href="#icon-pen"></use>
+        </svg>
+        <svg class="icon" id="eraser">
+            <use xlink:href="#icon-eraser"></use>
+        </svg>
+        <svg class="icon active" id="black" style="fill:black">
+            <use xlink:href="#icon-yuandian"></use>
+        </svg>
+        <svg class="icon" id="red" style="fill:red">
+            <use xlink:href="#icon-yuandian"></use>
+        </svg>
+        <svg class="icon" id="green" style="fill:green">
+            <use xlink:href="#icon-yuandian"></use>
+        </svg>
+        <svg class="icon" id="blue" style="fill:blue">
+            <use xlink:href="#icon-yuandian"></use>
+        </svg>
+        <svg class="icon" id="thick1" style="fill:black">
+            <use xlink:href="#icon-dian"></use>
+        </svg>
+        <svg class="icon active" id="thick2" style="fill:black">
+            <use xlink:href="#icon-dian1"></use>
+        </svg>
+        <svg class="icon" id="thick3" style="fill:black">
+            <use xlink:href="#icon-dian2"></use>
+        </svg>
+
+        <svg class="icon" id="clear" style="fill:#DDDDDD">
+            <use xlink:href="#icon-Clearsearch"></use>
+        </svg>
+        <svg class="icon" id="save">
+            <use xlink:href="#icon-save"></use>
+        </svg>
     </div>
     <script src="./main.js"></script>
 
