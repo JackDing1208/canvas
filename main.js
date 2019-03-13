@@ -16,12 +16,9 @@ context.fillStyle = 'black'
 context.strokeStyle = 'black'
 
 
-
 var moving = false
 var formerPoint = { x: undefined, y: undefined }
 var eraserOn = false
-
-
 
 
 //判断设备时候支持触屏
@@ -70,7 +67,13 @@ else {
         var x = xy.clientX
         var y = xy.clientY
         formerPoint = { x: x, y: y }  //重置former，否在会连接上次结束的点！！！
-        drawPoint(x, y, radius)
+        if (eraserOn) {
+            context.fillStyle = 'white'
+            drawPoint(x, y, 10)
+        }
+        else {
+            drawPoint(x, y, radius)
+        }
     }
 
     draw.onmousemove = function (xy) {
@@ -78,17 +81,23 @@ else {
             var x = xy.clientX
             var y = xy.clientY
             var presentPonit = { x: x, y: y }
-            drawLine(formerPoint.x, formerPoint.y, presentPonit.x, presentPonit.y, 5)
-            formerPoint = presentPonit  //不断替换坐标
+            if (eraserOn) {
+                context.fillStyle = 'white'
+                drawPoint(x, y, 10)
+            }
+            else {
+                drawLine(formerPoint.x, formerPoint.y, presentPonit.x, presentPonit.y, 5)
+                formerPoint = presentPonit  //不断替换坐标
+                formerPoint = presentPonit  //不断替换坐标
+            }
         }
-    }
 
-    draw.onmouseup = function (xy) {
-        moving = false
-    }
+        draw.onmouseup = function (xy) {
+            moving = false
+        }
 
+    }
 }
-
 //按钮功能
 
 pen.onclick = function () {
@@ -167,6 +176,19 @@ clear.onclick = function () {
     context.clearRect(0, 0, draw.width, draw.height);
 }
 
+
+
+save.onclick = function () {
+    var url = draw.toDataURL("image/png")
+    var a = document.createElement('a')
+    document.body.appendChild(a)
+    a.href = url
+    a.download = 'picture'
+    a.target = '_blank'
+    a.click()
+}
+
+
 function drawPoint(x, y, radius) {
     context.beginPath()
     context.arc(x, y, radius, 0, Math.PI * 2);
@@ -188,12 +210,3 @@ function canvasSize(canvas) {
     canvas.height = pageHeight
 }
 
-save.onclick = function () {
-    var url = draw.toDataURL("image/png")
-    var a = document.createComment('a')
-    document.body.appendChild(a)
-    a.href = url
-    a.download = "canvas"
-    a.target = "_blank"
-    a.click()
-}
